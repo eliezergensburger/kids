@@ -3,13 +3,13 @@ services:
   # PostgresSQL Database
   #---------------
   db:
-    image: postgres:latest
+    image: postgres:17.1
     container_name: PostgreSQL_DB
     restart: always
     environment:
-      POSTGRES_USER: $(DB_USER_SECRET)
-      POSTGRES_PASSWORD: $(DB_PASSWORD_SECRET)
-      POSTGRES_DB: $(DB_NAME_SECRET)
+      POSTGRES_USER: ${DB_USER_SECRET}
+      POSTGRES_PASSWORD: ${DB_PASSWORD_SECRET}
+      POSTGRES_DB: ${DB_NAME_SECRET}
     ports:
       - "5432:5432"
     volumes:
@@ -26,8 +26,8 @@ services:
     container_name: pgAdminApp
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: $(PGADMIN_EMAIL)
-      PGADMIN_DEFAULT_PASSWORD: $(PGADMIN_PASSWORD)
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
     ports:
       - "8080:80"
     volumes:
