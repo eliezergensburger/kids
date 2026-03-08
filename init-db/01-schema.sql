@@ -1,8 +1,29 @@
--- -- create tables
--- CREATE TABLE IF NOT EXISTS users (
---     id SERIAL PRIMARY KEY,
---     first_name VARCHAR(50) NOT NULL,
---     last_name VARCHAR(50) NOT NULL,
---     email VARCHAR(50) NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
+-- create tables for TEACHER, GROUP and CHILD
+CREATE TABLE IF NOT EXISTS TEACHER (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "GROUP" (
+    id SERIAL PRIMARY KEY,
+    groupName VARCHAR(50) NOT NULL,
+    teacherId INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (teacherId) REFERENCES TEACHER(id)
+);
+
+CREATE TABLE IF NOT EXISTS CHILD (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    age INT NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    groupId INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (groupId) REFERENCES GROUP(id)
+);
+
+
