@@ -1,4 +1,4 @@
--- INSERT INTO TEACHER
+-- INSERTS INTO TEACHER
 INSERT INTO TEACHER (first_name, last_name, email) VALUES
 ('Sarah', 'Levi', 'sarah.levi@example.com'),
 ('David', 'Cohen', 'david.cohen@example.com'),
@@ -10,8 +10,9 @@ INSERT INTO TEACHER (first_name, last_name, email) VALUES
 ('Yossi', 'Mizrahi', 'yossi.mizrahi@example.com'),
 ('Lior', 'Ben-Ami', 'lior.benami@example.com'),
 ('Rina', 'Aviv', 'rina.aviv@example.com');
--- INSERT INTO GROUP
-INSERT INTO "GROUP" (groupName, teacherId) VALUES
+
+-- INSERTS INTO GROUP
+INSERT INTO PLAYGROUP (groupName, teacherId) VALUES
 ('Lions', 1),
 ('Tigers', 2),
 ('Bears', 3),
@@ -20,7 +21,8 @@ INSERT INTO "GROUP" (groupName, teacherId) VALUES
 ('Owls', 6),
 ('Foxes', 7),
 ('Wolves', 8);
--- INSERT INTO CHILD
+
+-- INSERTS INTO CHILD
 INSERT INTO CHILD (first_name, last_name, age, email, groupId) VALUES
 ('Adam', 'Levi', 6, 'adam.levi@example.com', 1),
 ('Ella', 'Cohen', 5, 'ella.cohen@example.com', 1),
