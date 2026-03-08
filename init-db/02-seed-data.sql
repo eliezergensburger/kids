@@ -45,3 +45,4 @@ INSERT INTO CHILD (first_name, last_name, age, email, groupId) VALUES
 ('Harel', 'Ben-Ami', 7, 'harel.benami@example.com', 3),
 ('Yael', 'Aviv', 5, 'yael.aviv@example.com', 4);
 
+commit;
