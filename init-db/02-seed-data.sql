@@ -1,0 +1,5 @@
+INSERT INTO users (id, first_name, last_name, email, created_at) VALUES
+(1, 'John', 'Doe', 'john.doe@example.com', CURRENT_TIMESTAMP),
+(2, 'Jane', 'Smith', 'jane.smith@example.com', CURRENT_TIMESTAMP),
+(3, 'Alice', 'Johnson', 'alice.johnson@example.com', CURRENT_TIMESTAMP),
+(4, 'Bob', 'Brown', 'bob.brown@example.com', CURRENT_TIMESTAMP);
