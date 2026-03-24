@@ -186,7 +186,7 @@ DROP SCHEMA remote_inventory CASCADE;
 ### Automation via Antigravity/Startup
 If you want this setup to be ready every time you run `docker-compose up`, place the SQL from Step 4 into a file named `./db1_init/01_init_fdw.sql`. Docker will execute this script automatically during the first container creation.
 
-In PostgreSQL, **standard Foreign Key constraints do not work across different databases** (even if they are on the same server/Docker network). 
+### In PostgreSQL, **standard Foreign Key constraints do not work across different databases** (even if they are on the same server/Docker network). 
 
 A Foreign Key requires both tables to share the same system catalog to enforce referential integrity. When using `postgres_fdw`, the "Foreign Table" in `db1` is just a proxy; `db1` has no way to "lock" or "verify" a row in `db2` during a transaction.
 
