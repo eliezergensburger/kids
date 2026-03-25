@@ -344,8 +344,29 @@ To make it clear to other developers that this `product_id` is a "Foreign" key t
 2.  **Constraint:** Remove `REFERENCES ...`.
 3.  **Bridge:** Use the `JOIN` on the FDW table for reports.
 4.  **Enforcement:** Use a **Trigger** if you want the DB to handle it, or **App Logic** if you want your code to handle it.
+5.  **Naming Conventions:** To make it clear to other developers that this `product_id` is a "Foreign" key that isn't enforced locally, many teams use a specific naming convention:
+    *   Instead of `product_id`, name it `remote_product_id` or `ext_product_id`.
+    *   Add a **comment** to the column in the database:
+        ```sql
+        COMMENT ON COLUMN public.orders.product_id IS 'Soft Key: References products(id) in inventory_db via FDW';
+        ``` 
+    *   Use a **View** to hide the complexity:
+        ```sql
+        CREATE VIEW public.orders_with_products AS
+        SELECT 
+            o.order_id,
+            o.customer_name,
+            p.name AS product_name,
+            p.price
+        FROM public.orders o
+        JOIN remote_inventory.products p ON o.product_id = p.id;
+        ```     
 
+        
+
+---
 ## Integration from 'backupxxxx' file
+
 
 To integrate a backup file into your Dockerized PostgreSQL setup, you need to follow a three-step process: **Upload**, **Restore**, and **Link**.
 
