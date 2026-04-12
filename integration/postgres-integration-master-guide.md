@@ -18,6 +18,8 @@ This guide provides a complete, end-to-end workflow for connecting PostgreSQL da
 5. [Phase 4: Resolving Foreign Key Conflicts (Soft Keys)](#5-phase-4-resolving-foreign-key-conflicts-soft-keys)
 6. [Phase 5: The High-Performance Alternative (Schemas)](#6-phase-5-the-high-performance-alternative-schemas)
 7. [Phase 6: Management via pgAdmin](#7-phase-6-management-via-pgadmin)
+8. [Addendum: Soft Keys](#addendum-soft-keys)
+9. [Scenarios](#scenarios)
 
 ---
 
@@ -254,7 +256,7 @@ SELECT * FROM sales.orders o JOIN inventory.products p ON o.product_id = p.id;
 
 ---
 
-# Addendum
+##  Addendum: Soft Keys
 
 To "redefine" a column as a Soft Key when you are in the **Sales Database** referring to the **Inventory Database**, you simply treat the ID as raw data (a standard `INTEGER`). 
 
@@ -484,6 +486,7 @@ If your backup contains a table of `products` and you want your local `orders` t
 &nbsp;
 
 ---
+# __SCENARIOS__
 
 # Scenario 1:
 
