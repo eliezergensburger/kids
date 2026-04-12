@@ -605,7 +605,7 @@ IMPORT FOREIGN SCHEMA public FROM SERVER remote_inventory_server INTO provider_d
   
 
 ---
-# Scenerio 2:
+# Scenario 2:
 
 if i restore the db2 backup in another schema but in the same server as db1, can i use foreign keys?
 
