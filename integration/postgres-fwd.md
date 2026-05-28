@@ -62,6 +62,7 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: 'False' # Optimization for local use
     ports:
       - "${PGADMIN_PORT}:80"
     depends_on:
