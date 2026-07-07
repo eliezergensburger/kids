@@ -3,7 +3,7 @@ services:
   # PostgresSQL Database
   #---------------
   db:
-    image: postgres:17.1
+    image: postgres:18.4
     container_name: PostgreSQL_DB
     restart: always
     environment:
@@ -14,7 +14,7 @@ services:
       - "5432:5432"
     volumes:
       - ./init-db:/docker-entrypoint-initdb.d
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql
     networks:
       - kids_network
 
@@ -29,9 +29,30 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
     ports:
-      - "8080:80"
+      - "5050:80"
     volumes:
       - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - db
+    networks:
+      - kids_network
+
+ #----------------
+  # NiceGUI App
+  #----------------
+  nicegui:
+    build: .     # Assumes your Dockerfile is in the same folder
+    container_name: NiceGUI_App
+    restart: always
+    ports:
+      - "80:80"  # Exposes NiceGUI to your host browser
+    environment:
+      - DB_HOST=db
+      - DB_USER=${DB_USER_SECRET}
+      - DB_PASSWORD=${DB_PASSWORD_SECRET}
+      - DB_NAME=${DB_NAME_SECRET}
+    volumes:
+      - ./app:/app  # Optional: enables live-reloading during development
     depends_on:
       - db
     networks:

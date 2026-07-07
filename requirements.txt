@@ -1,0 +1,11 @@
+# Web Framework & Environment
+nicegui
+python-dotenv
+
+# Database (Async + Sync drivers)
+asyncpg
+psycopg[binary]>=3.2.1
+
+# Data Manipulation & Dashboard Graphing
+pandas
+plotly
